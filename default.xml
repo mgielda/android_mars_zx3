@@ -298,7 +298,7 @@
   <project path="sdk" name="platform/sdk" />
   <project path="system/bluetooth" name="platform/system/bluetooth" />
 
-  <project path="system/core" name="platform_system_core" remote="cambridgehackers" />
+  <project path="system/core" name="platform_system_core" remote="cambridgehackers" revision="jb" />
       <remote name="cambridgehackers" fetch="https://github.com/cambridgehackers"/>
 
 <!-- <project path="system/core" name="platform/system/core" /> -->
