@@ -31,6 +31,7 @@ Step 3. Compilation
 
 <pre>
 $ source ./build/envsetup.sh
+$ export ANDROID_JAVA_HOME=/opt/sun-jdk-1.6.0.31
 $ lunch mars_zx3-userdebug
 $ make
 </pre>
