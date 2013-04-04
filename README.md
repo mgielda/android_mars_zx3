@@ -31,7 +31,7 @@ Step 3. Compilation
 
 <pre>
 $ source ./build/envsetup.sh
-$ lunch mars-zx3-userdebug
+$ lunch mars_zx3-userdebug
 $ make
 </pre>
 
