@@ -311,9 +311,9 @@
   <!-- Add zedboard -->
   <remote name="pgielda" fetch="https://github.com/pgielda"/>
 
-  <project path="device/enclustra/gralloc" name="device_enclustrafb_gralloc" 
+  <project path="device/enclustra/gralloc" name="device_enclustra_gralloc" 
            remote="pgielda" />
-  <project path="device/enclustra/mars-zx3" name="device_enclustra_mars-zx3"
+  <project path="device/enclustra/mars_zx3" name="device_enclustra_mars_zx3"
            remote="pgielda" />
 
   <!-- Add busybox -->
