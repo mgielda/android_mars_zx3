@@ -1,5 +1,5 @@
 ================
-android_mars-zx3
+android_mars_zx3
 ================
 
 Android default.xml file for Enclustra's Mars-ZX3 Zynq Module
@@ -22,7 +22,7 @@ Step 2. Init and sync repository
 --------------------------------
 
 <pre>
-$ repo init -u git://github.com/pgielda/android_mars-zx3 -b master -m default.xml
+$ repo init -u git://github.com/pgielda/android_mars_zx3 -b master -m default.xml
 $ repo sync
 </pre>
 
