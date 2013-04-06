@@ -297,10 +297,6 @@
   <project path="prebuilts/tools" name="platform/prebuilts/tools" />
   <project path="sdk" name="platform/sdk" />
   <project path="system/bluetooth" name="platform/system/bluetooth" />
-
-  <!-- <project path="system/core" name="platform_system_core" remote="cambridgehackers" revision="jb" /> 
-      <remote name="cambridgehackers" fetch="https://github.com/cambridgehackers"/> -->
-
   <project path="system/core" name="platform/system/core" /> 
   <project path="system/extras" name="platform/system/extras" />
   <project path="system/media" name="platform/system/media" />
@@ -308,7 +304,7 @@
   <project path="system/security" name="platform/system/security" />
   <project path="system/vold" name="platform/system/vold" />
 
-  <!-- Add zedboard -->
+  <!-- Add enclustra mars zx3 + enclustra tft gralloc -->
   <remote name="pgielda" fetch="https://github.com/pgielda"/>
 
   <project path="device/enclustra/gralloc" name="device_enclustra_gralloc" 
