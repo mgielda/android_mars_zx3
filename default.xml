@@ -305,12 +305,12 @@
   <project path="system/vold" name="platform/system/vold" />
 
   <!-- Add enclustra mars zx3 + enclustra tft gralloc -->
-  <remote name="pgielda" fetch="https://github.com/pgielda"/>
+  <remote name="antmicro" fetch="https://github.com/antmicro"/>
 
   <project path="device/enclustra/gralloc" name="device_enclustra_gralloc" 
-           remote="pgielda" />
+           remote="antmicro" />
   <project path="device/enclustra/mars_zx3" name="device_enclustra_mars_zx3"
-           remote="pgielda" />
+           remote="antmicro" />
 
   <!-- Add busybox -->
   <remote name="busybox-android"
