@@ -14,7 +14,7 @@ You will need to compile your Android-enabled kernel speparately. You can base y
 
 To compile 3.5 kernel from our repository:
 <pre>
-$ git clone https://github.com/pgielda/enclustra_zynq_linux.git
+$ git clone https://github.com/antmicro/enclustra_zynq_linux.git
 $ cp config_enclustra_android .config
 $ CROSS_COMPILE="arm-none-eabi-" ARCH=arm make uImage
 </pre>
