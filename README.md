@@ -10,7 +10,7 @@ Installation guide
 Step 0. Initial steps
 ---------------------
 
-You will need to compile your Android-enabled kernel speparately. You can base your configuration on this file: https://github.com/antmicro/enclustra_zynq_linux/config_enclustra_android
+You will need to compile your Android-enabled kernel speparately. You can base your configuration on this file: https://github.com/antmicro/enclustra_zynq_linux/raw/master/config_enclustra_android
 
 To compile 3.5 kernel from our repository:
 <pre>
