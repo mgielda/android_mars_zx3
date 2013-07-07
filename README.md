@@ -48,3 +48,18 @@ $ make
 </pre>
 
 
+Step 4. Rootfs
+--------------
+
+If the compilation was successful, rootfs is located in out/target/product/mars_zx3/root.
+Also two additional files have to be present on the rootfs - out/target/product/mars_zx3/system.img and out/target/product/mars_zx3/userdata.img.
+
+<pre>
+$ mkfs.ext2 /dev/sdx1   # replace sdx1 with a partition you want to use
+$ mkdir /tmp/android_rootfs
+$ mount /dev/sdx1 /tmp/android_rootfs
+$ cp -r out/target/product/mars_zx3/root/* /tmp/android_rootfs/
+$ cp out/target/product/mars_zx3/system.img /tmp/android_rootfs/
+$ cp out/target/product/mars_zx3/userdata.img /tmp/android_rootfs
+$ umount /tmp/android_rootfs
+</pre>
