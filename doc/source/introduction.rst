@@ -1,7 +1,10 @@
 Introduction
 ============
 
-This is a compilation and usage manual for the port of the Android 4.0 operating system for Enclustra's Mars ZX3 Zynq module.
+This is a compilation and usage manual for the Android 4.1.2 operating system for `Enclustra's Mars ZX3 Zynq module <http://www.enclustra.com/en/products/system-on-chip-modules/mars-zx3/>`_.
+
+Acknowledgements
+----------------
 
 We would like to thank Enclustra GmbH (http://enclustra.com) for co-sponsoring the port.
 
@@ -112,7 +115,4 @@ The following procedure will produce a USB stick ready to run Android on the ZX3
    $ cp out/target/product/mars_zx3/system.img /tmp/android_rootfs/
    $ cp out/target/product/mars_zx3/userdata.img /tmp/android_rootfs
    $ umount /tmp/android_rootfs
-
-
-
 
