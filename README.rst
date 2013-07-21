@@ -5,9 +5,9 @@ This is a port of the Android 4.1.2 operating system for `Enclustra's Mars ZX3 Z
 
 The full documentation for the port can be acquired from the following links:
 
-* https://android-for-enclustra-mars-zx3-zynq-module.readthedocs.org/en/latest/ (HTML)
-* https://media.readthedocs.org/pdf/android-for-enclustra-mars-zx3-zynq-module/latest/android-for-enclustra-mars-zx3-zynq-module.pdf (PDF)
-* https://github.com/antmicro/android_mars_zx3/blob/master/doc/source/introduction.rst (RST fallback, use only if the above don't work)
+* `HTML <https://android-for-enclustra-mars-zx3-zynq-module.readthedocs.org/en/latest/>`_
+* `PDF <https://media.readthedocs.org/pdf/android-for-enclustra-mars-zx3-zynq-module/latest/android-for-enclustra-mars-zx3-zynq-module.pdf>`_
+* `RST fallback <https://github.com/antmicro/android_mars_zx3/blob/master/doc/source/introduction.rst>`_
 
 Acknowledgements
 ----------------
