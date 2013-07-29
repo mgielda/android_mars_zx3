@@ -175,8 +175,8 @@
   <project path="external/webkit" name="platform/external/webkit" />
   <project path="external/webp" name="platform/external/webp" />
   <project path="external/webrtc" name="platform/external/webrtc" />
-  <project path="external/wpa_supplicant_6" name="platform/external/wpa_supplicant_6" />
-  <project path="external/wpa_supplicant_8" name="platform/external/wpa_supplicant_8" />
+  <project path="external/wpa_supplicant_6" name="platform/external/wpa_supplicant_6" revision="refs/tags/android-4.2.2_r1.2" />
+  <project path="external/wpa_supplicant_8" name="platform/external/wpa_supplicant_8" revision="refs/tags/android-4.2.2_r1.2" />
   <project path="external/xmlwriter" name="platform/external/xmlwriter" />
   <project path="external/yaffs2" name="platform/external/yaffs2" />
   <project path="external/zlib" name="platform/external/zlib" />
