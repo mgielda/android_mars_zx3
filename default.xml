@@ -394,9 +394,4 @@
   <project path="device/enclustra/mars_zx3" name="device_enclustra_mars_zx3"
            remote="antmicro" />
 
-  <!-- Add busybox -->
-  <remote name="busybox-android"
-          fetch="git://github.com/Gnurou/"/>
-  <project path="busybox-android" name="busybox-android" remote="busybox-android" revision="master"/>
-
 </manifest>
