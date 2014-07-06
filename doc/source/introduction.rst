@@ -17,6 +17,7 @@ Version information
    Peter Gielda,Draft version,07.07.2013,0.1
    Michael Gielda,Updated for Sphinx,08.07.2013,0.2
    Sebastian Kramer,Typos; required packages; improvements,08.07.2013,0.2.1
+   Peter Gielda,Minor improvements,06.06.2014,0.2.2
 
 Compiling the system
 ====================
@@ -55,7 +56,7 @@ The ``repo`` tool, used to manipulate the Android git repositories, can be downl
 
    mkdir ~/bin
    PATH=~/bin:$PATH
-   curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo
+   curl https://raw.githubusercontent.com/pgielda/android_mars_zx3/master/tools/repo > ~/bin/repo
    chmod a+x ~/bin/repo
 
 Java
@@ -95,9 +96,8 @@ To compile the 3.5 kernel from our repository:
 
    git clone https://github.com/antmicro/enclustra_zynq_linux.git
    cp config_enclustra_android .config
-   CROSS_COMPILE="arm-none-eabi-" ARCH=arm make uImage -jX
-   # set X to thread number, e.g. use -j8 if you have 4 cores with hyper-threading
-
+   CROSS_COMPILE="arm-none-eabi-" ARCH=arm make uImage -j5
+   
 Getting the Android sources
 ---------------------------
 
@@ -105,8 +105,7 @@ The sources are fetched using the ``repo`` tool:
 
 .. code-block:: bash
 
-   repo init -u git://github.com/antmicro/android_mars_zx3 -b master \
-                                                      -m default.xml
+   repo init -u git://github.com/antmicro/android_mars_zx3 -b master
    repo sync -f # use -f to ignore fetch errors
 
 .. warning::
