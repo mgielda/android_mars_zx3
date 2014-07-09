@@ -394,4 +394,12 @@
   <project path="device/enclustra/mars_zx3" name="device_enclustra_mars_zx3"
            remote="antmicro" />
 
+
+  <project path="device/antmicro/drm_lights" name="android_drm_lights"
+           remote="antmicro" />
+
+  <project path="device/antmicro/v4l2_camera" name="android_v4l2_camera"
+           remote="antmicro" />
+
+
 </manifest>
