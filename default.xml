@@ -396,7 +396,7 @@
            remote="antmicro" />
 -->
   <project path="device/enclustra/mars_zx3" name="device_enclustra_mars_zx3"
-           remote="antmicro" />
+           remote="antmicro" revision="master" />
 
 <!--
   <project path="device/antmicro/drm_lights" name="android_drm_lights"
