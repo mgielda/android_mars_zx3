@@ -18,7 +18,7 @@ Version information
    Michael Gielda,Updated for Sphinx,08.07.2013,0.2
    Sebastian Kramer,Typos; required packages; improvements,08.07.2013,0.2.1
    Peter Gielda,Minor improvements,06.06.2014,0.2.2
-   Mariusz Glebocki,Updated to Android 4.3.1,03.09.2014,0.3.0
+   Mariusz Glebocki,Updated to Android 4.3.1,03.09.2014,0.2.3
 
 Compiling the system
 ====================
@@ -58,7 +58,7 @@ The ``repo`` tool, used to manipulate the Android git repositories, can be downl
 
    mkdir ~/bin
    PATH=~/bin:$PATH
-   curl https://raw.githubusercontent.com/pgielda/android_mars_zx3/master/tools/repo > ~/bin/repo
+   curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
    chmod a+x ~/bin/repo
 
 Java
@@ -122,11 +122,25 @@ Android can now be compiled using your Java installation. Be sure to supply the 
 .. code-block:: bash
 
    source ./build/envsetup.sh
-   export JAVA_HOME=$HOME/jdk1.6.0_45    # this path is the one where you installed JDK 
+   export JAVA_HOME=$HOME/jdk1.6.0_45  # path to the JDK installed before
    export ANDROID_JAVA_HOME=$JAVA_HOME
    export PATH=$JAVA_HOME/bin:$PATH
    lunch mars_zx3-userdebug
    make -j$(nproc)
+
+Additional boot files
+---------------------
+
+To boot Android on the device, you will need additional files:
+
+* devicetree.dtb
+* system_top.bin
+
+To download them, use command:
+
+.. code-block:: bash
+
+   git clone --depth 1 https://github.com/antmicro/boot_files_mars_zx3.git
 
 Creating SD Card with the system
 ================================
@@ -169,12 +183,9 @@ Copying files
 
 .. note::
 
-   ``$KERNEL`` and ``$ANDROID`` used below are respectively: the kernel, and Android sources main directories paths.
+   ``$KERNEL``, ``$ANDROID``, and ``$BOOTFILES`` used below are respectively: the kernel and Android sources main directories paths, and path to additional boot files (system_top.bin and devicetree.dtb)
 
 If the compilation was successful, the rootfs CPIO image is located at :file:`$ANDROID/out/target/product/mars_zx3/ramdisk.img`, and the system partition at :file:`$ANDROID/out/target/product/mars_zx3/system.img`. The compiled kernel image is at :file:`$KERNEL/arch/arm/boot/uImage`.
-
-.. warning::
-   FIXME: copy also devicetree.dtb, system_top.bit
 
 To install files on the card, run following commands as root:
 
@@ -186,10 +197,14 @@ To install files on the card, run following commands as root:
    mount /dev/sdX3 /mnt/android/system
    mount -o loop $ANDROID/out/target/product/mars_zx3/system.img /mnt/android/img
 
-   cp $KERNEL/arch/arm/boot/{uImage,devicetree.dtb,system_top.bit} /mnt/android/boot
+   cp $KERNEL/arch/arm/boot/{uImage} /mnt/android/boot
+   cp $BOOTFILES/{devicetree.dtb,system_top.bit} /mnt/android/boot
+
    rsync -av /mnt/android/img/* /mnt/android/system
    cd /mnt/android/root
    gunzip -c $ANDROID/out/target/product/mars_zx3/ramdisk.img | cpio -i
+   chmod +x *.sh
+
    cd /
    umount /mnt/android/{img,boot,root,system}
 
@@ -213,7 +228,10 @@ In U-Boot command prompt type following commands to set environment variables:
 .. code-block:: bash
 
    setenv bootargs console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait earlyprintk
-   setenv bootcmd mmcinfo && fatload mmc 0 0x3000000 uImage && fatload mmc 0 0x2A00000 devicetree.dtb && fatload mmc 0 0x200000 system_top.bit && fpga loadb 0 0x200000 ${filesize} && bootm 0x3000000 - 0x2A00000
+   setenv bootcmd mmcinfo && fatload mmc 0 0x3000000 uImage && \
+   fatload mmc 0 0x2A00000 devicetree.dtb && \
+   fatload mmc 0 0x200000 system_top.bit && fpga loadb 0 0x200000 ${filesize} && \
+   bootm 0x3000000 - 0x2A00000
    saveenv
 
 And to boot:
@@ -223,7 +241,7 @@ And to boot:
    boot
 
 Using USB WiFi dongle
-=================
+=====================
 
 By default, only WiFi interfaces based on Atheros AR9271 are supported. Just connect dongle to the USB port and go to the Android settings, where you can turn on WiFi.
 
