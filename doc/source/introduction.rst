@@ -14,16 +14,18 @@ Version information
 .. csv-table::
    :header: Author,Content,Date,Version
 
-   Peter Gielda,Draft version,07.07.2013,0.1
-   Michael Gielda,Updated for Sphinx,08.07.2013,0.2
+   Peter Gielda,Draft version,07.07.2013,0.1.0
+   Michael Gielda,Updated for Sphinx,08.07.2013,0.2.0
    Sebastian Kramer,Typos; required packages; improvements,08.07.2013,0.2.1
    Peter Gielda,Minor improvements,06.06.2014,0.2.2
    Mariusz Glebocki,Updated to Android 4.3.1,03.09.2014,0.2.3
+   Michael Gielda,Corrections,12.09.2014,0.2.4
 
 Compiling the system
 ====================
 
-The port was prepared using Gentoo and Debian Linux environments. The procedures described here should also work on other systems, but if you detect any errors or ommissions please e-mail us at `contact@antmicro.com <mailto:contact@antmicro.com>`_.
+The port was prepared using Gentoo and Debian Linux environments.
+The procedures described here should also work on other systems, but if you detect any errors or ommissions please e-mail us at `contact@antmicro.com <mailto:contact@antmicro.com>`_.
 
 Prerequisites
 -------------
@@ -64,9 +66,13 @@ The ``repo`` tool, used to manipulate the Android git repositories, can be downl
 Java
 ~~~~
 
-The Java JDK 1.6 is required for Android compilation. Oracle JDK 1.6 installer might not be available in your system's package manager. In this case, get latest version of Java SE Development Kit from `Oracle website <http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html>`_. In the file list accept license and download .bin file for your system (Linux x86 or Linux x86). This step requires logging in.
+The Java JDK 1.6 is required for Android compilation.
+Oracle JDK 1.6 installer might not be available in your system's package manager.
+In this case, get the latest version of the Java SE Development Kit from the `Oracle website <http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase6-419409.html>`_.
+In the file list accept the license and download the ``.bin`` file for your system (Linux x86 or Linux x86).
+This step requires logging in.
 
-Instructions to install package named ``jdk-6u45-linux-x64.bin`` and downloaded to ``~/downloads`` directory are:
+Instructions to install the package named ``jdk-6u45-linux-x64.bin`` downloaded to the ``~/downloads`` directory are:
 
 .. code-block:: bash
 
@@ -74,12 +80,12 @@ Instructions to install package named ``jdk-6u45-linux-x64.bin`` and downloaded 
    chmod +x ~/downloads/jdk-6u45-linux-x64.bin
    ~/downloads/jdk-6u45-linux-x64.bin
 
-Package is unpacked to ``~/jdk1.6.0_45`` directory.
+The package is unpacked to the ``~/jdk1.6.0_45`` directory.
 
 Other packages
 ~~~~~~~~~~~~~~
 
-A number of other dependencies is also required, but these should be available from package managers on most systems without a problem - e.g. on Debian 7.0 (Wheezy) you can get them by typing:
+A number of other dependencies are also required, but these should be available from package managers on most systems without a problem - e.g. on Debian 7.0 (Wheezy) you can get them by typing:
 
 .. code-block:: bash
 
@@ -88,9 +94,8 @@ A number of other dependencies is also required, but these should be available f
 Building the Linux kernel
 -------------------------
 
-You will need to compile your Android-enabled kernel separately. You can base your configuration on the following file:
-
-https://github.com/antmicro/enclustra_zynq_linux/raw/master/config_enclustra_android
+You will need to compile your Android-enabled kernel separately.
+You can base your configuration on https://github.com/antmicro/enclustra_zynq_linux/raw/master/config_enclustra_android.
 
 To compile the 3.13 kernel from our repository:
 
@@ -117,7 +122,8 @@ The sources are fetched using the ``repo`` tool:
 Building Android
 ----------------
 
-Android can now be compiled using your Java installation. Be sure to supply the correct path to the JDK.
+Android can now be compiled using your Java installation.
+Be sure to supply the correct path to the JDK.
 
 .. code-block:: bash
 
@@ -131,7 +137,7 @@ Android can now be compiled using your Java installation. Be sure to supply the 
 Additional boot files
 ---------------------
 
-To boot Android on the device, you will need additional files:
+To boot Android on the device, you will need some additional files:
 
 * devicetree.dtb
 * system_top.bin
@@ -142,17 +148,17 @@ To download them, use command:
 
    git clone --depth 1 https://github.com/antmicro/boot_files_mars_zx3.git
 
-Creating SD Card with the system
-================================
+Creating an SD Card with the system
+===================================
 
-To boot Android on the device you have to use at least 512 MB SD Card. The system needs four partitions: 
+To boot Android on the device you have to use at least a 512 MB SD Card. The system needs four partitions: 
 
-* for kernel image and related files (vfat, 32 MB)
+* for the kernel image and related files (vfat, 32 MB)
 * root partition (ext4, 32 MB)
 * system (ext4, 256 MB)
 * data (ext4, 100 MB or more)
 
-The last partition, used to store user data and additional applications, will be created as large as possible.
+The last partition, used to store user data and additional applications, will be formatted to take up the remaining space on the SD card.
 
 Preparing the card
 ------------------
@@ -161,7 +167,7 @@ Preparing the card
 
    All data on the card will be lost. :file:`/dev/sdX` below is used as the card device node.
 
-Insert card into reader and create partitions with following commands (lines beginning with colon are typed inside fdisk command prompt, without colon):
+Insert the card into reader and create partitions with the following commands (lines beginning with a colon are typed inside the ``fdisk`` command prompt, without the colon):
 
 .. code-block:: bash
 
@@ -185,9 +191,10 @@ Copying files
 
    ``$KERNEL``, ``$ANDROID``, and ``$BOOTFILES`` used below are respectively: the kernel and Android sources main directories paths, and path to additional boot files (system_top.bin and devicetree.dtb)
 
-If the compilation was successful, the rootfs CPIO image is located at :file:`$ANDROID/out/target/product/mars_zx3/ramdisk.img`, and the system partition at :file:`$ANDROID/out/target/product/mars_zx3/system.img`. The compiled kernel image is at :file:`$KERNEL/arch/arm/boot/uImage`.
+If the compilation was successful, the rootfs CPIO image is located at :file:`$ANDROID/out/target/product/mars_zx3/ramdisk.img`, and the system partition at :file:`$ANDROID/out/target/product/mars_zx3/system.img`.
+The compiled kernel image is at :file:`$KERNEL/arch/arm/boot/uImage`.
 
-To install files on the card, run following commands as root:
+To install files on the card, run the following commands as root:
 
 .. code-block:: bash
 
@@ -211,19 +218,18 @@ To install files on the card, run following commands as root:
 Booting
 =======
 
-To boot Android on the device you have to install U-Boot first. Sources and build instructions can be found on:
-
-http://www.denx.de/wiki/U-Boot
+To boot Android on the device you have to install U-Boot first.
+Sources and build instructions can be found at the `U-Boot website <http://www.denx.de/wiki/U-Boot>`_.
 
 U-Boot environment
 ------------------
 
-After successfull U-Boot installation, connect USB cable to the micro USB port and run serial terminal program, for example picocom:
+After successfull U-Boot installation, connect the USB cable to the micro USB port and run a serial terminal program, for example ``picocom``:
 
 .. code-block:: bash
    picocom -b 115200 /dev/ttyUSB0
 
-In U-Boot command prompt type following commands to set environment variables:
+In the U-Boot command prompt type the following commands to set environment variables:
 
 .. code-block:: bash
 
@@ -240,12 +246,15 @@ And to boot:
 
    boot
 
-Using USB WiFi dongle
-=====================
+Using a USB WiFi dongle
+=======================
 
-By default, only WiFi interfaces based on Atheros AR9271 are supported. Just connect dongle to the USB port and go to the Android settings, where you can turn on WiFi.
+By default, only WiFi interfaces based on Atheros AR9271 are supported.
+Simply connect the dongle to the USB port and go to the Android settings, where you can turn on WiFi.
 
-Hints on adding other interfaces support
-----------------------------------------
+Hints on adding support for other interfaces
+--------------------------------------------
 
-To use another interfaces, you have to turn on interface's driver in the kernel config, rebuild it, and optionally put its firmware in `etc/firmware` directory on the system partition. For detailed information which driver and firmware to use, google for its name or ID. You can obtain them with ``lsusb`` command. Good place to start is the `Linux Wireless <http://wireless.kernel.org/en/users/Drivers/>`_ page.
+To use other interfaces, you have to turn on the required interface's driver in the kernel config, rebuild it, and optionally put its firmware in the ``etc/firmware`` directory on the system partition.
+For detailed information which driver and firmware to use, google for its name or ID, which can be obtained with the ``lsusb`` command.
+The `Linux Wireless <http://wireless.kernel.org/en/users/Drivers/>`_ page is a good place to start.
